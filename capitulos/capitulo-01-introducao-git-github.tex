@@ -1,0 +1,172 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage[brazil]{babel}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{listings}
+\definecolor{azul}{HTML}{173B57}
+\definecolor{azulclaro}{HTML}{EAF2F8}
+\definecolor{verde}{HTML}{287A62}
+\definecolor{cinza}{HTML}{F3F5F7}
+\hypersetup{colorlinks=true,linkcolor=azul,urlcolor=verde}
+\pagestyle{fancy}\fancyhf{}\lhead{Práticas Computacionais II}\rhead{Introdução ao Git e GitHub}\cfoot{\thepage}
+\titleformat{\section}{\Large\bfseries\color{azul}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{azul}}{\thesubsection}{0.6em}{}
+\setlist[itemize]{itemsep=3pt,topsep=4pt}
+\setlist[enumerate]{itemsep=4pt,topsep=4pt}
+\newtcolorbox{conceito}{colback=azulclaro,colframe=azul,boxrule=.6pt,arc=2mm}
+\newtcolorbox{atividade}{colback=cinza,colframe=verde,boxrule=.7pt,arc=2mm,title=Atividade prática}
+\newtcolorbox{atencao}{colback=yellow!10,colframe=orange!70!black,boxrule=.6pt,arc=2mm,title=Atenção}
+\lstset{basicstyle=\ttfamily\small,backgroundcolor=\color{cinza},frame=single,rulecolor=\color{azul!35},breaklines=true}
+\begin{document}
+\begin{titlepage}
+\centering\vspace*{2.2cm}
+{\Large Práticas Computacionais II\par}\vspace{1.5cm}
+{\Huge\bfseries\color{azul} Aula 1\par}\vspace{.4cm}
+{\LARGE Introdução ao versionamento, Git e GitHub\par}\vspace{1.5cm}
+\begin{tcolorbox}[width=.86\textwidth,colback=azulclaro,colframe=azul,arc=2mm]
+Nesta aula, vamos entender por que projetos precisam de histórico, distinguir Git de GitHub e criar o primeiro repositório do curso.
+\end{tcolorbox}
+\vfill
+\textbf{Professor:} Mauro Sandro dos Reis\\[.3cm]
+\textbf{Repositório do curso:} \url{https://github.com/maurosreis/introducao-git-github}\\[.5cm]
+\today
+\end{titlepage}
+\tableofcontents\newpage
+
+\section{Objetivos de aprendizagem}
+Ao final desta aula, você deverá ser capaz de:
+\begin{itemize}
+\item explicar o que é versionamento de software e por que ele é útil;
+\item reconhecer problemas comuns de desenvolvimento sem controle de versão;
+\item diferenciar Git de GitHub;
+\item identificar, em nível introdutório, repositório, versão, alteração e histórico;
+\item acessar o GitHub, localizar o repositório do curso e criar um repositório pessoal;
+\item descrever, de forma geral, como uma mudança passa do computador para o histórico do Git e pode ser compartilhada.
+\end{itemize}
+
+\section{O problema: como acompanhar as mudanças?}
+Imagine que você está desenvolvendo um programa para calcular o consumo de energia de uma instalação. Primeiro, cria um arquivo chamado \texttt{consumo.py}. Depois, corrige uma fórmula, acrescenta uma interface e altera a forma de ler os dados. Se algo parar de funcionar, como descobrir qual mudança causou o erro? E como recuperar a versão que funcionava?
+
+Uma solução improvisada é salvar várias cópias: \texttt{consumo\_final.py}, \texttt{consumo\_final2.py}, \texttt{consumo\_agoraVai.py}. Isso pode evitar uma perda imediata, mas torna difícil saber qual arquivo é o correto, o que mudou e quem fez cada alteração.
+
+\begin{conceito}
+\textbf{Versionamento} é o registro organizado das mudanças feitas em arquivos ao longo do tempo. Um sistema de controle de versão permite consultar esse histórico e identificar versões do projeto.
+\end{conceito}
+
+\section{Por que versionar um projeto?}
+O controle de versão ajuda a:
+\begin{itemize}
+\item acompanhar a evolução de códigos, relatórios, apresentações e outros arquivos;
+\item entender quando e por que uma alteração foi feita;
+\item recuperar uma versão anterior quando uma mudança causa problemas;
+\item comparar versões e localizar diferenças;
+\item trabalhar com outras pessoas com mais organização;
+\item manter um registro verificável do desenvolvimento do projeto.
+\end{itemize}
+
+Versionamento não substitui cópias de segurança. Um histórico local protege contra alguns erros de edição, mas não necessariamente contra perda ou defeito do computador. Hospedar uma cópia remota, por exemplo no GitHub, ajuda a compartilhar e a manter o projeto acessível, mas também não elimina a necessidade de boas práticas de backup para dados importantes.
+
+\section{O que é Git?}
+\textbf{Git} é um sistema distribuído de controle de versão. Ele registra mudanças em um projeto e permite consultar diferentes pontos de sua evolução. O Git é instalado e executado no computador, embora também possa ser usado por interfaces gráficas e serviços on-line.
+
+O Git trabalha com um \textbf{repositório}: a pasta do projeto junto com os dados que formam seu histórico. Em vez de tratar cada versão como uma pasta completamente independente, o Git registra pontos de controle chamados \textbf{commits}. Cada commit guarda um conjunto de mudanças e uma mensagem que ajuda a explicar o que foi feito.
+
+\subsection{Vocabulário inicial}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.1cm}X}
+\toprule
+Termo & Significado inicial\\
+\midrule
+Repositório & Projeto acompanhado pelo Git, incluindo seu histórico.\\
+Alteração & Modificação, criação ou remoção de arquivos.\\
+Commit & Registro de um conjunto de alterações no histórico, acompanhado de uma mensagem.\\
+Histórico & Sequência de commits que permite observar a evolução do projeto.\\
+Repositório local & Repositório armazenado no computador do usuário.\\
+Repositório remoto & Cópia do repositório acessível em outro computador ou serviço, como o GitHub.\\
+\bottomrule
+\end{tabularx}
+
+\section{O que é GitHub?}
+\textbf{GitHub} é uma plataforma on-line para hospedar repositórios Git e oferecer recursos para compartilhar projetos e colaborar. Pelo site, é possível navegar pelos arquivos, acompanhar alterações e discutir contribuições.
+
+\begin{conceito}
+\textbf{Git} é o sistema de controle de versão. \textbf{GitHub} é um serviço on-line que hospeda repositórios Git e oferece ferramentas de colaboração. O Git pode ser usado sem GitHub; o GitHub utiliza Git para controlar versões dos repositórios.
+\end{conceito}
+
+\section{Visão geral do fluxo de trabalho}
+Quando começarmos a usar Git no computador, o fluxo básico será:
+\begin{enumerate}
+\item editar ou criar arquivos do projeto;
+\item selecionar as alterações que farão parte do próximo registro;
+\item criar um commit com uma mensagem clara;
+\item enviar os commits para um repositório remoto, quando quisermos compartilhar ou guardar a cópia on-line.
+\end{enumerate}
+
+Os comandos associados a essas etapas serão estudados nas próximas aulas. Por enquanto, reconheça os nomes: \texttt{add} seleciona alterações, \texttt{commit} registra alterações no histórico, \texttt{push} envia commits ao repositório remoto, \texttt{clone} obtém uma cópia de um repositório e \texttt{pull} busca atualizações. Não é necessário memorizar comandos nesta primeira aula.
+
+\section{Primeiros passos no GitHub}
+\subsection{Acessar o material do curso}
+\begin{enumerate}
+\item Acesse \url{https://github.com/maurosreis}.
+\item Localize o repositório \texttt{introducao-git-github}.
+\item Abra o repositório e observe o arquivo \texttt{README.md}, que apresenta o curso.
+\item Identifique a lista de arquivos e pastas. Ao longo do curso, esse repositório reunirá materiais e atividades.
+\end{enumerate}
+
+\subsection{Criar uma conta}
+Se você ainda não tem uma conta, acesse \url{https://github.com} e escolha a opção de cadastro. Use um endereço de e-mail ao qual tenha acesso e guarde suas credenciais com segurança. O nome de usuário será parte do endereço público do seu perfil.
+
+\subsection{Criar um primeiro repositório}
+\begin{enumerate}
+\item Entre na sua conta do GitHub.
+\item Use o botão \textbf{New} ou a opção de criar um repositório.
+\item Escolha um nome simples, por exemplo \texttt{meu-primeiro-repositorio}.
+\item Escreva uma descrição curta, como ``Repositório criado na Aula 1 de Git e GitHub''.
+\item Escolha a visibilidade. Um repositório \textbf{público} pode ser visto por outras pessoas; um \textbf{privado} restringe o acesso conforme as permissões configuradas.
+\item Marque a opção para adicionar um arquivo README, se ela estiver disponível.
+\item Crie o repositório e confira se ele aparece na sua conta.
+\end{enumerate}
+
+\begin{atencao}
+Não publique senhas, chaves de acesso, tokens, dados pessoais de terceiros ou arquivos confidenciais em repositórios públicos. Antes de enviar arquivos, verifique o que eles contêm.
+\end{atencao}
+
+\section{Atividades de fixação}
+\begin{enumerate}
+\item Explique, com suas palavras, o que significa versionar um projeto.
+\item Cite dois problemas que podem ocorrer quando se mantêm várias cópias de arquivos com nomes como ``final'', ``final2'' e ``final\_corrigido''.
+\item Qual é a diferença entre Git e GitHub?
+\item O que é um commit? Para que serve a mensagem associada a ele?
+\item Se um projeto tem um repositório local e outro remoto, qual é a função geral de cada um?
+\item Por que um repositório público exige cuidado com os arquivos enviados?
+\end{enumerate}
+
+\begin{atividade}
+\textbf{Entrega da aula}\\
+Crie seu primeiro repositório no GitHub com um arquivo README. No README, inclua: (a) o objetivo do repositório; (b) seu nome ou identificação acadêmica, conforme orientação do professor; e (c) uma frase explicando o que você espera aprender sobre Git. Compartilhe com o professor o endereço do repositório, seguindo a orientação dada em sala.
+\end{atividade}
+
+\section{Resumo da aula}
+\begin{itemize}
+\item Versionamento registra a evolução dos arquivos de um projeto.
+\item Git é um sistema de controle de versão distribuído.
+\item GitHub hospeda repositórios Git e oferece recursos de compartilhamento e colaboração.
+\item Um repositório reúne arquivos e histórico; commits registram conjuntos de alterações.
+\item Nesta primeira prática, criamos uma conta ou acessamos o GitHub, localizamos o repositório do curso e criamos um repositório pessoal.
+\end{itemize}
+
+\section{Próxima aula}
+Na próxima aula, vamos preparar o ambiente de trabalho: instalar ou verificar o Git, configurar a identificação do usuário e criar um repositório local para acompanhar as primeiras alterações usando comandos básicos.
+
+\vfill
+\noindent\textbf{Material do curso:} \url{https://github.com/maurosreis/introducao-git-github}
+\end{document}
