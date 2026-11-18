@@ -7,8 +7,6 @@ Material de apoio ao curso introdutório de Git e GitHub da disciplina. O curso 
 
 Ao desenvolver um programa ou outro projeto, modificamos arquivos várias vezes. Sem um registro dessas mudanças, pode ser difícil descobrir o que foi alterado, recuperar uma versão anterior ou colaborar com outras pessoas.
 
-O Git é um sistema de controle de versão que registra a evolução dos arquivos de um projeto. O GitHub é uma plataforma on-line que hospeda repositórios Git e oferece recursos para compartilhar projetos e colaborar.
-=======
 Material de apoio ao curso introdutório de Git e GitHub da disciplina. O curso apresenta os conceitos de controle de versão e ensina, passo a passo, como usar o Git e o GitHub para organizar, acompanhar e compartilhar projetos.
 
 ## Sobre o curso
