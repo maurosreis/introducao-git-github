@@ -14,7 +14,6 @@ Material de apoio ao curso introdutório de Git e GitHub da disciplina. O curso 
 Ao desenvolver um programa ou outro projeto, é comum modificar arquivos várias vezes. Sem um controle dessas mudanças, pode ser difícil descobrir o que foi alterado, recuperar uma versão anterior ou trabalhar em conjunto com outras pessoas.
 
 O Git é um sistema de controle de versão que registra as alterações feitas nos arquivos de um projeto. O GitHub é uma plataforma on-line que hospeda repositórios Git e oferece recursos para compartilhar projetos e colaborar.
->>>>>>> 09d150c05570df8a901e888d68ad3c396b9f90c0
 
 Neste curso, vamos estudar esses conceitos e praticar o uso das ferramentas desde os primeiros passos.
 
@@ -35,7 +34,7 @@ Ao final do curso, espera-se que o estudante consiga:
 - Obter uma cópia de um repositório com `clone` e atualizá-la com `pull`
 =======
 - Obter uma cópia de um repositório com `clone` e atualizar essa cópia com `pull`
->>>>>>> 09d150c05570df8a901e888d68ad3c396b9f90c0
+
 - Editar e organizar arquivos de um projeto no GitHub
 - Utilizar o GitHub para compartilhar projetos e acompanhar os materiais do curso
 - Conhecer noções iniciais de colaboração, incluindo branches e pull requests
@@ -54,7 +53,7 @@ O curso inclui um capítulo avulso sobre versionamento, Git e GitHub:
 **GitHub** é uma plataforma on-line que hospeda repositórios Git. Ela permite acessar projetos pela internet, compartilhar arquivos e colaborar com outras pessoas.
 
 Em resumo: Git é a ferramenta de controle de versão; GitHub é um serviço que hospeda repositórios Git e facilita o trabalho colaborativo.
->>>>>>> 09d150c05570df8a901e888d68ad3c396b9f90c0
+
 
 ## Aulas
 
@@ -74,7 +73,7 @@ Consulte o [roteiro da Aula 1](aulas/aula-01/README.md).
 - Acessar e baixar o repositório do curso
 
 O material da aula será disponibilizado nesta seção.
->>>>>>> 09d150c05570df8a901e888d68ad3c396b9f90c0
+
 
 ## Como usar este repositório
 
